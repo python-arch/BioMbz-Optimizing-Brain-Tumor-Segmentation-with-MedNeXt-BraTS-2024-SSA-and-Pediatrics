@@ -8,7 +8,7 @@ This project focuses on advancing the performance of the baseline MedNext model 
 - [Dataset Setup](#Dataset_Setup)
 - [Usage](#usage)
 - [Features and Experiments OverView](#features)
-- [License](#license)
+- [Credits](#credits)
 
 ## Installation
 
@@ -92,6 +92,6 @@ The souping process involved loading pre-trained models, sorting them by their t
 
 This project demonstrates a comprehensive approach to improving brain tumor segmentation using the MedNext model, leveraging innovative optimization techniques, extensive hyper-parameter tuning, and efficient model souping methods.
 ### Augmentation Experiments
-## License
+## Credits
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project was developed using MBZUAI Resources and as a part of the undergraduate research internship program. Thanks to all of our mentors and our professor for supporting us :)
