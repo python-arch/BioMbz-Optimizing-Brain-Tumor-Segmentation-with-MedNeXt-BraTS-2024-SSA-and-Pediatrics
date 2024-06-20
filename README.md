@@ -50,11 +50,48 @@ pip install -r requirements.txt
 - Automating the process of training your model using `slurm`:
 
 ## Features and Experiments OverView
+We conducted a total of more than 200 experiments, which included:
+1. Integrating the new optimizer and Hyper-parameter tuning experiments.
+2. Implementing Different Attention Mehcanisms in the MedNext.
+3. Retraining the models for 75 epochs instead of the original 100 epochs.
+4. Main experiments involving different training and evaluation setups:
+    - Train on SSA, Evaluate on SSA.
+    - Train on SSA + Glioma, Evaluate on SSA.
+    - Train on SSA + Generated Data, Evaluate on SSA.
+    - Train on SSA + Glioma + Generated Data, Evaluate on SSA.
+5. Souping experiments to combine model checkpoints for improved performance.
+6. Performaing Augmentations Experiments.
 
-- Feature 1
-- Feature 2
-- Feature 3
+### "The Road Less Scheduled" - Why?
+It is innovative momentum approach employs an alternative form of momentum with superior theoretical properties, ensuring worst-case optimal performance for any momentum parameter in convex Lipschitz settings. The authors conducted a comprehensive evaluation on 28 diverse problems, ranging from logistic regression to large-scale deep learning tasks, demonstrating that schedule-free methods often match or surpass heavily-tuned cosine schedules. Paper could be found here : https://arxiv.org/abs/2405.15682
 
+### Hyper-Parameters Tuning: Integration of the New Optimizer into MedNext
+1. We utilized the authors' experimental setup for working with an MRI image dataset as a starting point.
+2. Conducted over 11 experiments on a specific data fold (fold number 2) over 100 epochs to identify the optimal hyper-parameters for the model, comparing the results against our baseline model.
+3. Expanded the experiments to cover all 5 folds and performed 5-fold cross-validation to ensure the new model's performance consistency.
+
+### Attention mechanisms experiments:
+### Model Souping
+#### Souping Approach
+- **Uniform Souping:** Initially attempted this method but found it ineffective for our medical data.
+- **Greedy Souping:** This approach proved more successful across different folds of our data:
+    - **Fold 0:** Souped 15 checkpoints.
+    - **Fold 1:** Souped 7 checkpoints.
+    - **Fold 2:** Souped 6 checkpoints.
+
+The souping process involved loading pre-trained models, sorting them by their test average scores, and iteratively adding models that improved the performance. Results showed a minor improvement of around 0.34% for the souped model using fold 0, with no significant improvements for other folds.
+
+#### Automation of Training Process
+**Challenges Addressed:**
+- The necessity of running numerous models with various hyper-parameter combinations for souping posed significant logistical challenges.
+- Manually managing and submitting each job was impractical and time-consuming, especially with the need for parallel processing capabilities.
+
+**Solution:**
+- Developed a Python script integrated with Slurm, a job scheduler for managing and submitting jobs to compute clusters.
+- The script automates the process by checking available workstations for optimal resource allocation and dynamically submitting jobs to Slurm for efficient parallel processing of model training tasks.
+
+This project demonstrates a comprehensive approach to improving brain tumor segmentation using the MedNext model, leveraging innovative optimization techniques, extensive hyper-parameter tuning, and efficient model souping methods.
+### Augmentation Experiments
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
