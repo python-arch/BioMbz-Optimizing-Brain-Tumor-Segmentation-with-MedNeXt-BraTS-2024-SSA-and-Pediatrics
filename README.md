@@ -7,7 +7,7 @@ This project focuses on advancing the performance of the baseline MedNext model 
 - [Installation](#installation)
 - [Dataset Setup](#Dataset_Setup)
 - [Usage](#usage)
-- [Features](#features)
+- [Features and Experiments OverView](#features)
 - [License](#license)
 
 ## Installation
@@ -49,7 +49,7 @@ pip install -r requirements.txt
 - Exploring Attention-based MedneXt:
 - Automating the process of training your model using `slurm`:
 
-## Features
+## Features and Experiments OverView
 
 - Feature 1
 - Feature 2
