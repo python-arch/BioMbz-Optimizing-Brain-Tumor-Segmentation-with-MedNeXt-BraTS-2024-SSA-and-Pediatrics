@@ -18,7 +18,7 @@ Step-by-step instructions on how to get a development environment running.
 
 ```bash
 # Clone the repository
-git clone [https://github.com/yourusername/your-repo-name.git](https://github.com/python-arch/BraTS-UGRIP/
+git clone [https://github.com/yourusername/BraTS-UGRIP.git](https://github.com/python-arch/BraTS-UGRIP.git/)
 
 # Navigate to the project directory
 cd BraTS-UGRIP
