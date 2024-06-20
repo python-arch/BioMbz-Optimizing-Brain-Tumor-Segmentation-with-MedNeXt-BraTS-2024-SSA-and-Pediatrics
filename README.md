@@ -41,16 +41,15 @@ pip install -r requirements.txt
 - All Evaluations will be done on the original (aka. SSA Dataset) which is splitted into 5 folds.
 
 ## Usage
-
-Instructions and examples for using the project. You can add screenshots to illustrate the features.
-
-```bash
-# Example command
-your-command-here
-
-# Example output
-your-output-here
-```
+- Training your own MedNext model:
+   - After setting up the dataset , you can utilize `mednext_train.py`:
+      - You will need to have account on wandb to log the results , and setting up the `Args` Class to setup the hyper-parameters for the experiment.
+      - The difference between the `Args` in this training file and the original `mednext_train.py` is that we have the option for new `schedule-free` optimizer.
+- Souping:
+   - You can use the `souping.py` file in which you will have to provide the path for the folder containing pre-trained models.
+   - Moreover, you need to specify in the Args class the value for the `greedy` attribute if it is **False** Uniform Souping will be performed , otherwise , Greedy Souping.
+- Exploring Attention-based MedneXt:
+- Automating the process of training your model using `slurm`:
 
 ## Features
 
@@ -58,22 +57,6 @@ your-output-here
 - Feature 2
 - Feature 3
 
-## Contributing
-
-Contributions are always welcome! Please follow these steps:
-
-1. Fork the project.
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`).
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`).
-4. Push to the branch (`git push origin feature/AmazingFeature`).
-5. Open a pull request.
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Contact
-
-Your Name - [your-email@example.com](mailto:your-email@example.com)
-
-Project Link: [https://github.com/yourusername/your-repo-name](https://github.com/yourusername/your-repo-name)
