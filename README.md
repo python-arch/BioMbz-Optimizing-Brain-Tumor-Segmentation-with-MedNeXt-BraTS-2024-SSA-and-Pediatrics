@@ -22,7 +22,9 @@ git clone https://github.com/python-arch/BraTS-UGRIP.git
 cd BraTS-UGRIP
 
 # Create Conda Environment
-conda create BraTS-UGRIP python==3.8
+conda create -n BraTS-UGRIP python==3.8
+# Activate the Conda Enviroment
+conda activate BraTS-UGRIP
 
 # Install dependencies
 pip install -r requirements.txt
