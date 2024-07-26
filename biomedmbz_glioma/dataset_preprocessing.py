@@ -32,7 +32,7 @@ def load_seg_label(directory, example_id):
     seg = nibabel.load(os.path.join(directory, example_id, f"{example_id}-seg.nii.gz"))
     affine, header = seg.affine, seg.header
     
-    seg = get_data(seg, "uint8")
+    seg = get_data(seg, "unit8")
     seg = nibabel.nifti1.Nifti1Image(seg, affine, header=header)
     
     return seg
@@ -42,7 +42,8 @@ def crop_foreground(image, label=None):
     bbox = transforms.utils.generate_spatial_bounding_box(image)
     image = transforms.SpatialCrop(roi_start=bbox[0], roi_end=bbox[1])(image)
     image_metadata = np.vstack([bbox, orig_shape, image.shape[1:]])
-    label = transforms.SpatialCrop(roi_start=bbox[0], roi_end=bbox[1])(label) if label is not None else None
+    label = transforms.SpatialCrop(roi_start=bbox[0], roi_end=bbox[1])(label) \
+        if label is not None else None
     
     return image, label, image_metadata
 
@@ -91,7 +92,7 @@ def encode_foregrounds(image):
     image = np.concatenate([image, mask])
     return image
 
-def preprocess_sample(directory, example_id, patch_size=[128, 128, 128], list_modalities=["t2f", "t1n", "t1c", "t2w"], augmentations=None):
+def preprocess_sample(directory, example_id, patch_size=[128, 128, 128], list_modalities=["t2f", "t1n", "t1c", "t2w"]):
     vol = load_modalities_and_merge(directory, example_id, list_modalities)
     
     image = vol.get_fdata().astype(np.float32)
@@ -113,34 +114,12 @@ def preprocess_sample(directory, example_id, patch_size=[128, 128, 128], list_mo
     if label is not None:
         image, label = standardize(image, label, patch_size)
     
-    if augmentations:
-        image, label = augmentations(image, label)
-    
     image = encode_foregrounds(image)
     
     return image, label, image_metadata
 
-def apply_augmentations(image, label):
-    # Define the augmentation pipeline
-    augmentation_transforms = transforms.Compose([
-        transforms.RandFlip(spatial_axis=[0], prob=0.5),
-        transforms.RandFlip(spatial_axis=[1], prob=0.5),
-        transforms.RandFlip(spatial_axis=[2], prob=0.5),
-        transforms.RandRotate90(prob=0.5, max_k=3),
-        transforms.RandShiftIntensity(offsets=0.10, prob=0.5),
-        transforms.RandAffined(keys=['image', 'label'], rotate_range=[0.1, 0.1, 0.1], prob=0.5)
-    ])
-    
-    # Apply the augmentations
-    if label is not None:
-        augmented = augmentation_transforms({"image": image, "label": label})
-        return augmented["image"], augmented["label"]
-    else:
-        augmented = augmentation_transforms({"image": image})
-        return augmented["image"], None
-
 def preprocessing_and_save(target_directory, source_directory, example_id, patch_size=[128, 128, 128], list_modalities=["t2f", "t1n", "t1c", "t2w"]):
-    image, label, image_metadata = preprocess_sample(source_directory, example_id, patch_size, list_modalities, augmentations=apply_augmentations)
+    image, label, image_metadata = preprocess_sample(source_directory, example_id, patch_size, list_modalities)
     
     np.save(os.path.join(target_directory, f"{example_id}_x.npy"), image, allow_pickle=False)
     np.save(os.path.join(target_directory, f"{example_id}_meta.npy"), image_metadata, allow_pickle=False)
