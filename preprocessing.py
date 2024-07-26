@@ -5,14 +5,14 @@ import tqdm
 from multiprocessing import Pool
 from pathlib import Path
 
-from biomedmbz_glioma.dataset_preprocessing import preprocessing_and_save
+from biomedmbz_glioma.dataset_preprocessing import preprocessing_and_save , collect_cropped_image_sizes
 
 n_jobs=8
 
 if __name__ == '__main__':
     # ---------------------------------------------------------------------------
-    source_directory="/home/abdelrahman.elsayed/Downloads/new_brats/BraTS2024_BioMedIAMBZ/dataset"
-    target_directory="/home/abdelrahman.elsayed/Downloads/new_brats/BraTS2024_BioMedIAMBZ/dataset/preprocessed"
+    source_directory=...
+    target_directory=...
     patch_size = [128, 128, 128]
     
     print('Preprocessing:')
@@ -24,8 +24,10 @@ if __name__ == '__main__':
         shutil.rmtree(target_directory)
     Path(target_directory).mkdir(parents=True, exist_ok=False)
     example_ids = os.listdir(source_directory)
+    # get the patch size (median)
+    median_patch_size = collect_cropped_image_sizes(source_directory,example_ids)
     def fn(x):
-        preprocessing_and_save(target_directory, source_directory, x, patch_size)
+        preprocessing_and_save(target_directory, source_directory, x, median_patch_size)
     with Pool(n_jobs) as p:
         r = list(tqdm.tqdm(p.imap(fn, example_ids), total=len(example_ids)))
     # ---------------------------------------------------------------------------
