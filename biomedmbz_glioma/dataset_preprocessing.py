@@ -9,6 +9,7 @@ from monai import transforms
 from multiprocessing import Pool
 from pathlib import Path
 
+
 def get_data(nifty, dtype="int16"):
     if dtype == "int16":
         data = np.abs(nifty.get_fdata().astype(np.int16))
@@ -37,6 +38,18 @@ def load_seg_label(directory, example_id):
     
     return seg
 
+def rescale_intensity(image, lower_percentile=2, upper_percentile=98):
+    """
+    Rescale the intensity of the image to increase contrast.
+    """
+    lower = np.percentile(image, lower_percentile)
+    upper = np.percentile(image, upper_percentile)
+    
+    image = np.clip(image, lower, upper)
+    image = (image - lower) / (upper - lower)
+    image = image * 255
+    return image
+
 def crop_foreground(image, label=None):
     orig_shape = image.shape[1:]
     bbox = transforms.utils.generate_spatial_bounding_box(image)
@@ -52,7 +65,7 @@ def normalize_intensity(image):
     return fn(image)
 
 def calculate_pad_shape(image, patch_size):
-    assert patch_size == [128, 128, 128]
+    """ assert patch_size == [128, 128, 128] """
     
     min_shape = patch_size
     image_shape = image.shape[1:]
@@ -92,7 +105,7 @@ def encode_foregrounds(image):
     image = np.concatenate([image, mask])
     return image
 
-def preprocess_sample(directory, example_id, patch_size=[128, 128, 128], list_modalities=["t2f", "t1n", "t1c", "t2w"]):
+def preprocess_sample(directory, example_id, patch_size=[128, 128, 128], list_modalities=["t2f", "t1n", "t1c", "t2w"] , apply_intensity=False):
     vol = load_modalities_and_merge(directory, example_id, list_modalities)
     
     image = vol.get_fdata().astype(np.float32)
@@ -110,6 +123,11 @@ def preprocess_sample(directory, example_id, patch_size=[128, 128, 128], list_mo
     image, label, image_metadata = crop_foreground(image, label)
     
     image_shape = image.shape[1:]  # Collect the shape of the cropped image
+    
+    
+    # Apply rescaling intensity
+    if apply_intensity:
+        image = np.array([rescale_intensity(channel) for channel in image])
     
     image = normalize_intensity(image)
     
