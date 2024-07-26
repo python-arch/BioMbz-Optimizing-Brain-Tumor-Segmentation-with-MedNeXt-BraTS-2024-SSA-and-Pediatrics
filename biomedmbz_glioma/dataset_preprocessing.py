@@ -147,6 +147,7 @@ def collect_cropped_image_sizes(directory, example_ids, list_modalities=["t2f", 
     shapes = np.array(shapes)
     median_shape = np.median(shapes, axis=0).astype(int)  # Compute the median shape
     
+    print("The median shape is: " , median_shape)
     return median_shape
 
 def preprocessing_and_save(target_directory, source_directory, example_id, patch_size=[128, 128, 128], list_modalities=["t2f", "t1n", "t1c", "t2w"]):
