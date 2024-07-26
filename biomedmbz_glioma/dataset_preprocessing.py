@@ -109,6 +109,8 @@ def preprocess_sample(directory, example_id, patch_size=[128, 128, 128], list_mo
     
     image, label, image_metadata = crop_foreground(image, label)
     
+    image_shape = image.shape[1:]  # Collect the shape of the cropped image
+    
     image = normalize_intensity(image)
     
     if label is not None:
@@ -116,10 +118,21 @@ def preprocess_sample(directory, example_id, patch_size=[128, 128, 128], list_mo
     
     image = encode_foregrounds(image)
     
-    return image, label, image_metadata
+    return image, label, image_metadata, image_shape  # Return the image shape to be used to collect the image sizes
+
+def collect_cropped_image_sizes(directory, example_ids, list_modalities=["t2f", "t1n", "t1c", "t2w"]):
+    shapes = []
+    for example_id in example_ids:
+        _, _, _, image_shape = preprocess_sample(directory, example_id, list_modalities)
+        shapes.append(image_shape)
+    
+    shapes = np.array(shapes)
+    median_shape = np.median(shapes, axis=0).astype(int)  # Compute the median shape
+    
+    return median_shape
 
 def preprocessing_and_save(target_directory, source_directory, example_id, patch_size=[128, 128, 128], list_modalities=["t2f", "t1n", "t1c", "t2w"]):
-    image, label, image_metadata = preprocess_sample(source_directory, example_id, patch_size, list_modalities)
+    image, label, image_metadata, _ = preprocess_sample(source_directory, example_id,patch_size,list_modalities)
     
     np.save(os.path.join(target_directory, f"{example_id}_x.npy"), image, allow_pickle=False)
     np.save(os.path.join(target_directory, f"{example_id}_meta.npy"), image_metadata, allow_pickle=False)
