@@ -13,7 +13,6 @@ if __name__ == '__main__':
     # ---------------------------------------------------------------------------
     source_directory=...
     target_directory=...
-    patch_size = [128, 128, 128]
     
     print('Preprocessing:')
     print('Source dir:', source_directory)
