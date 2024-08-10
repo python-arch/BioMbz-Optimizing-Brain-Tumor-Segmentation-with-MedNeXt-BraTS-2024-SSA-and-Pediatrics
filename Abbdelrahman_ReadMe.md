@@ -113,7 +113,7 @@ To streamline and accelerate our model training process, we developed an automat
 
 4. **Completion and Saving:** Upon job completion, the script copies the resulting model checkpoints to a specified directory and updates the status.
 
-This automation script significantly reduces the manual effort required for model training and ensures that a large number of models can be efficiently trained and evaluated. the figure below shows an illustration of the output of running the experiments for one of our experiments. 
+This automation script significantly reduces the manual effort required for model training and ensures that a large number of models can be efficiently trained and evaluated. The figure below illustrates the results of one of our experiments. It displays the parameters for each model run, their current status, the GPU device they are using, the SLURM job number, and the epoch number.
 
 <img width="824" alt="Screenshot 2024-08-11 at 12 28 50 AM" src="https://github.com/user-attachments/assets/d4608ee8-d0fc-4bd8-8ef6-23c5a49f062c">
 
