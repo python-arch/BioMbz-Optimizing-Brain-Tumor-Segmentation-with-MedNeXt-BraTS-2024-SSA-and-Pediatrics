@@ -26,7 +26,7 @@ We experimented with both uniform souping and greedy souping techniques on our m
     3. **Fold 2:** Souped 6 checkpoints.
   
 #### Results
-The results demonstrated a slight improvement in the performance of the souped model using the models trained on Fold 0, with an increase of approximately 0.34%. However, for the other folds, no notable improvements were observed. The tables below provide a detailed comparison between the best model from each fold and the greedy souped model. In the following subsections we explain the metrics we used for our evaluation and the tables for the results.
+The results demonstrated a slight improvement in the performance of the souped model using the models trained on Fold 0, with an increase of approximately 0.34%. However, for the other folds, no notable improvements were observed. The tables below provide a detailed comparison between the best model from each fold and the greedy souped model. Moreover , the used metrics in the comparison are explained below.
 
 #### Metrics Used
 
