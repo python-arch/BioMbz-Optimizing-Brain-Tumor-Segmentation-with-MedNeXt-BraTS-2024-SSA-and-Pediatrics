@@ -10,35 +10,44 @@
 
 4. The following tables show a detailed comparison between the best model obtained in each fold and the greedy souped model.
 
-<div style="display: flex; justify-content: space-around;">
+<div style="display: flex; justify-content: center; align-items: center;">
 
-<div style="flex: 1; text-align: center;">
-<strong>Table 1: Performance of the Best Model (Fold 0)</strong>
-  
-| **Metric**   | **Value**           |
-|--------------|---------------------|
-| test_avg     | 0.8220043778419495   |
-| test_et      | 0.7842099070549011   |
-| test_loss    | 0.19675968370089927  |
-| test_tc      | 0.8237403035163879   |
-| test_wt      | 0.8580629825592041   |
+<!-- First Column: Best Model Table -->
+<div style="margin-right: 20px;">
+<table>
+<caption><strong>Performance of the Best Model (Fold 0)</strong></caption>
+<thead>
+<tr><th><strong>Metric</strong></th><th><strong>Value</strong></th></tr>
+</thead>
+<tbody>
+<tr><td>test_avg</td><td>0.8220043778419495</td></tr>
+<tr><td>test_et</td><td>0.7842099070549011</td></tr>
+<tr><td>test_loss</td><td>0.19675968370089927</td></tr>
+<tr><td>test_tc</td><td>0.8237403035163879</td></tr>
+<tr><td>test_wt</td><td>0.8580629825592041</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- Second Column: Greedy Souping Model Table -->
+<div>
+<table>
+<caption><strong>Performance of the Greedy Soup (Fold 0)</strong></caption>
+<thead>
+<tr><th><strong>Metric</strong></th><th><strong>Value</strong></th></tr>
+</thead>
+<tbody>
+<tr><td>test_avg</td><td>0.8254003524780273</td></tr>
+<tr><td>test_et</td><td>0.7878062725067139</td></tr>
+<tr><td>test_loss</td><td>0.19331554230302572</td></tr>
+<tr><td>test_tc</td><td>0.8270795941352844</td></tr>
+<tr><td>test_wt</td><td>0.8613150715827942</td></tr>
+</tbody>
+</table>
+</div>
 
 </div>
 
-<div style="flex: 1; text-align: center;">
-<strong>Table 2: Performance of the Greedy Soup (Fold 0)</strong>
-  
-| **Metric**   | **Value**           |
-|--------------|---------------------|
-| test_avg     | 0.8254003524780273   |
-| test_et      | 0.7878062725067139   |
-| test_loss    | 0.19331554230302572  |
-| test_tc      | 0.8270795941352844   |
-| test_wt      | 0.8613150715827942   |
-
-</div>
-
-</div>
 
 
 | **Test Metric** | **DataLoader 0**      |
