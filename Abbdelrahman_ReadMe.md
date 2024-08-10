@@ -10,6 +10,8 @@
 
 4. The following tables show a detailed comparison between the best model obtained in each fold and the greedy souped model.
 
+<div style="text-align: center;">
+
 | **Metric**   | **Best Model (Fold 0)** | **Greedy Soup (Fold 0)** |
 |--------------|-------------------------|--------------------------|
 | **test_avg** | 0.8220043778419495       | 0.8254003524780273        |
@@ -19,6 +21,10 @@
 | **test_wt**  | 0.8580629825592041       | 0.8613150715827942        |
 
 **Table 1:** Performance comparison for Fold 0
+
+</div>
+
+<div style="text-align: center;">
 
 | **Metric**   | **Best Model (Fold 1)** | **Greedy Soup (Fold 1)** |
 |--------------|-------------------------|--------------------------|
@@ -30,6 +36,10 @@
 
 **Table 2:** Performance comparison for Fold 1
 
+</div>
+
+<div style="text-align: center;">
+
 | **Metric**   | **Best Model (Fold 2)** | **Greedy Soup (Fold 2)** |
 |--------------|-------------------------|--------------------------|
 | **test_avg** | 0.889476478099823        | 0.889476478099823         |
@@ -40,3 +50,4 @@
 
 **Table 3:** Performance comparison for Fold 2
 
+</div>
