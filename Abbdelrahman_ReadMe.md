@@ -1,3 +1,15 @@
+# "The Road Less Scheduled" - Why?
+In our baseline MedNeXt models, we used traditional optimizers with learning rate schedulers. While these optimizers performed well in our experiments, a recent breakthrough by Meta AI introduced a novel optimizer with a unique setup. Let us present our new **Schedule-Free Optimizer**.
+
+Traditional learning rate schedules often require specifying an optimization stopping point, T, to achieve optimal performance. In contrast, the Schedule-Free Optimizer offered by Meta AI eliminates the need for such schedules altogether. By avoiding explicit scheduling, this optimizer provides state-of-the-art performance across a wide range of problems, from convex optimization to large-scale deep learning tasks, without introducing additional hyperparameters beyond those used in standard momentum-based optimizers.
+
+The novel Schedule-Free approach is grounded in a new theoretical framework that unifies scheduling and iterate averaging. This innovative momentum technique offers superior theoretical properties, ensuring optimal performance in convex Lipschitz settings for any momentum parameter. Comprehensive evaluations across 28 diverse problems, including logistic regression and large-scale deep learning tasks, show that this new approach often matches or surpasses the performance of heavily-tuned cosine schedules.
+
+That's why this optimizer stands out. As we discuss our fine-tuning method, you'll see why we think this optimizer will be a key player for us.
+
+For more details, you can access the full paper [here](https://arxiv.org/abs/2405.15682).
+
+
 # Model Souping
 ### What is Model Souping?
 
