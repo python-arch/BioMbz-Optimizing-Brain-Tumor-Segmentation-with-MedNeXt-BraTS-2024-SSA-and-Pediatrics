@@ -1,4 +1,4 @@
-#Model Souping
+# Model Souping
 1. **Uniform Souping:** Initially attempted this method but found it didn't perform well on our medical data. It didn't effectively enhance model performance as expected.
 
 2. **Greedy Souping:** This approach proved more successful across different folds of our data:
