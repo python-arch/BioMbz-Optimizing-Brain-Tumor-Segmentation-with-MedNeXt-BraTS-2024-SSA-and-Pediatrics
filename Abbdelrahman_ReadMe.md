@@ -10,6 +10,11 @@
 
 4. The following tables show a detailed comparison between the best model obtained in each fold and the greedy souped model.
 
+<div style="display: flex; justify-content: space-around;">
+
+<div style="flex: 1; text-align: center;">
+<strong>Table 1: Performance of the Best Model (Fold 0)</strong>
+  
 | **Metric**   | **Value**           |
 |--------------|---------------------|
 | test_avg     | 0.8220043778419495   |
@@ -18,8 +23,11 @@
 | test_tc      | 0.8237403035163879   |
 | test_wt      | 0.8580629825592041   |
 
-**Table 1:** Performance of the best model for fold 0 (15 checkpoints)
+</div>
 
+<div style="flex: 1; text-align: center;">
+<strong>Table 2: Performance of the Greedy Soup (Fold 0)</strong>
+  
 | **Metric**   | **Value**           |
 |--------------|---------------------|
 | test_avg     | 0.8254003524780273   |
@@ -28,7 +36,10 @@
 | test_tc      | 0.8270795941352844   |
 | test_wt      | 0.8613150715827942   |
 
-**Table 2:** Performance of the greedy soup for fold 0
+</div>
+
+</div>
+
 
 | **Test Metric** | **DataLoader 0**      |
 |-----------------|-----------------------|
