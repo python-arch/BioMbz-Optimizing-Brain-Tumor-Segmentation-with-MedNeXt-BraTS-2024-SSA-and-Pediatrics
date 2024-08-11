@@ -9,8 +9,9 @@ That's why this optimizer stands out. As we discuss our fine-tuning method, you'
 
 For more details, you can access the full paper [here](https://arxiv.org/abs/2405.15682).
 
-# Methodology
+# Methodology (How did we tune our experimental setup for this optimizer)
 To tune our experimental setup using our new optimizer we have done several experiments with several folds and several learning rates to find our optimal set of hyper-parameters. The found optimal parameters were learning rate of 0.0027 and weight decay of zero. In the figure below , you can see the validation loss curves for different experiments we have carried to tune the our model using the new optimizer.
+
 ![W B Chart 8_12_2024, 1_22_51 AM](https://github.com/user-attachments/assets/d82e4f12-6722-46f5-89cb-c2521952dec0)
 
 # Model Souping
