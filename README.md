@@ -51,7 +51,7 @@ pip install -r requirements.txt
    - You can use the `souping.py` file in which you will have to provide the path for the folder containing pre-trained models.
    - Moreover, you need to specify in the Args class the value for the `greedy` attribute if it is **False** Uniform Souping will be performed , otherwise , Greedy Souping.
 
-## Features and Experiments OverView
+# Features and Experiments OverView
 ### "The Road Less Scheduled" - Why?
 In our baseline MedNeXt models, we used traditional optimizers with learning rate schedulers. While these optimizers performed well in our experiments, a recent breakthrough by Meta AI introduced a novel optimizer with a unique setup. Let us present our new **Schedule-Free Optimizer**.
 
