@@ -51,8 +51,8 @@ pip install -r requirements.txt
    - You can use the `souping.py` file in which you will have to provide the path for the folder containing pre-trained models.
    - Moreover, you need to specify in the Args class the value for the `greedy` attribute if it is **False** Uniform Souping will be performed , otherwise , Greedy Souping.
 
-# Features and Experiments OverView
-# "The Road Less Scheduled" - Why?
+## Features and Experiments OverView
+### "The Road Less Scheduled" - Why?
 In our baseline MedNeXt models, we used traditional optimizers with learning rate schedulers. While these optimizers performed well in our experiments, a recent breakthrough by Meta AI introduced a novel optimizer with a unique setup. Let us present our new **Schedule-Free Optimizer**.
 
 Traditional learning rate schedules often require specifying an optimization stopping point, T, to achieve optimal performance. In contrast, the Schedule-Free Optimizer offered by Meta AI eliminates the need for such schedules altogether. By avoiding explicit scheduling, this optimizer provides state-of-the-art performance across a wide range of problems, from convex optimization to large-scale deep learning tasks, without introducing additional hyperparameters beyond those used in standard momentum-based optimizers.
@@ -63,12 +63,12 @@ That's why this optimizer stands out. As we discuss our fine-tuning method, you'
 
 For more details, you can access the full paper [here](https://arxiv.org/abs/2405.15682).
 
-# Methodology (How did we tune our experimental setup for this optimizer)
+### Methodology (How did we tune our experimental setup for this optimizer)
 To tune our experimental setup using our new optimizer we have done several experiments with several folds and several learning rates to find our optimal set of hyper-parameters. The found optimal parameters were learning rate of 0.0027 and weight decay of zero. In the figure below , you can see the validation loss curves for different experiments we have carried to tune the our model using the new optimizer.
 
 ![W B Chart 8_12_2024, 1_22_51 AM](https://github.com/user-attachments/assets/d82e4f12-6722-46f5-89cb-c2521952dec0)
 
-# Model Souping
+## Model Souping
 ### What is Model Souping?
 Model souping is a concept that was introduced back in 2022 , aiming to boost ML/DL models performance and their generalization ability. Typically, to get the best model accuracy, you train several models with different settings and then choose the one that performs the best on a separate validation set, while ignoring the others. Instead of picking just one model, averaging the weights of several models trained with different settings or hyper-parameters can actually boost accuracy and make the model more reliable. The best part is, this method doesn’t add extra costs for running or storing the models like , for example , ensemble technique. This introduced recipe is called "Model Soups".
 
@@ -159,24 +159,24 @@ for both brats Africa and BraTS Pediatric we have used a patch size of (128,160,
 
 *ET: Enhancing Tumor, TC: Tumor Core, WT: Whole Tumor, HD95: 95th percentile Hausdorff Distance*
 
-# Synthetic Data Generation for BraTS Africa
+## Synthetic Data Generation for BraTS Africa
 
-## Overview
+### Overview
 
 We are leveraging the [Med-DDPM repository](https://github.com/JotatD/med-ddpm-brats) to generate high-quality synthetic data for brain MRI images. This project extends the original work by fine-tuning the model on the BraTS Africa dataset using LoRA (Low-Rank Adaptation) techniques.
 
-## Med-DDPM: Conditional Diffusion Models for Semantic 3D Brain MRI Synthesis
+### Med-DDPM: Conditional Diffusion Models for Semantic 3D Brain MRI Synthesis
 
 Med-DDPM is a powerful tool for generating realistic and semantically accurate 3D brain MRI images. It supports both whole-head MRI synthesis and brain-extracted 4 modalities MRIs (T1, T1ce, T2, Flair) based on the BraTS2021 dataset.
 
-### Key Features of Med-DDPM
+#### Key Features of Med-DDPM
 
 - Generates high-quality 3D medical images while preserving semantic information
 - Trained on whole-head MRI and brain-extracted 4 modalities MRIs
 - Provides pretrained model weights for immediate use
 - Supports custom dataset integration
 
-### Visual Examples
+#### Visual Examples
 
 The following images demonstrate the capability of Med-DDPM in generating synthetic brain MRI images:
 
@@ -210,7 +210,7 @@ These gifs showcase:
 
 Note how the synthetic samples maintain the overall structure defined by the input mask while introducing realistic variations in tissue appearance and intensity.
 
-## Our Approach: LoRA Fine-tuning
+### Our Approach: LoRA Fine-tuning
 
 To adapt Med-DDPM for our specific use case with the BraTS Africa dataset, we implemented LoRA fine-tuning on the last two layers of the model. This approach allows us to:
 
@@ -218,18 +218,18 @@ To adapt Med-DDPM for our specific use case with the BraTS Africa dataset, we im
 2. Maintain the core capabilities of the original model while introducing dataset-specific features
 3. Reduce computational resources required for fine-tuning
 
-## Synthetic Data Generation Process
+### Synthetic Data Generation Process
 
 1. **Base Model**: We start with the pretrained Med-DDPM model.
 2. **Fine-tuning**: Apply LoRA fine-tuning on the last two layers using the BraTS Africa dataset.
 3. **Generation**: Use the fine-tuned model to generate synthetic brain MRI data.
 4. **Integration**: Incorporate the synthetic data into our training pipeline.
 
-## Performance Evaluation
+### Performance Evaluation
 
 We have conducted extensive evaluations to assess the quality and utility of our synthetic data. The performance metrics and comparative analyses can be found in the "Performance" section below.
 
-## Usage Instructions
+### Usage Instructions
 
 1. Clone the Med-DDPM repository:
    ```
@@ -249,7 +249,7 @@ We have conducted extensive evaluations to assess the quality and utility of our
    ./scripts/sample_brats_lora.sh
    ```
 
-## Performance
+### Performance
 
 | Metric     | BRATS Synthetic | BRATS Base |
 |------------|-----------------|------------|
@@ -263,18 +263,18 @@ We have conducted extensive evaluations to assess the quality and utility of our
 *ET: Enhancing Tumor, TC: Tumor Core, WT: Whole Tumor, HD95: 95th percentile Hausdorff Distance*
 
 
-# Model Ensembling Algorithm
+## Model Ensembling Algorithm
 
-## Description
+### Description
 
 This algorithm performs model ensembling for brain MRI scans, combining predictions from multiple models with weighted averaging.
 
-## Input
+### Input
 
 - `N` models, each with corresponding weightings for every channel (TC, WT, ET)
 - An input brain MRI scan `x ∈ ℝ^(3×H×W×D)`
 
-## Algorithm
+### Algorithm
 
 1. Initialize output `y` as a zero tensor with shape `3 × H × W × D`
 2. Initialize `sum_w` as a zero vector with shape `3`
@@ -287,22 +287,22 @@ This algorithm performs model ensembling for brain MRI scans, combining predicti
    `y = y / sum_w`
 5. Return `y`
 
-## Output
+### Output
 
 The final ensemble prediction `y` for the input brain MRI scan.
 
-## Notes
+### Notes
 
 - The algorithm assumes that all models have the same input and output shapes.
 - Weightings are applied per channel (TC, WT, ET).
 - The final normalization ensures that the ensemble prediction is a weighted average of individual model predictions.
 
 
-# MedNeXt Fine-tuning for BraTS Africa Dataset
+## MedNeXt Fine-tuning for BraTS Africa Dataset
 
 This part focuses on fine-tuning the MedNeXt model, a state-of-the-art architecture for medical image segmentation, specifically for the BraTS Africa dataset. The base MedNeXt model was initially trained on a combined dataset of BraTS Adult Glioma and BraTS Africa. Our fine-tuning process aims to enhance the model's performance and specificity for brain tumor segmentation in African populations, addressing potential regional variations in tumor characteristics and imaging protocols.
 
-## Algorithm
+### Algorithm
 
 1. Model Initialization:
    - Load pre-trained MedNeXt model (trained on BraTS Adult Glioma + BraTS Africa)
@@ -381,10 +381,10 @@ Notes:
 
 The results show that the fine-tuned MedNeXt models generally outperform the base and medium models, with the "MedNeXt Finetuned True 0.7,0.5" configuration achieving the best overall performance in terms of average Dice score (0.896) and average HD 95 (14.682).
 
-# Too many experiments to carry? Let's Automate it
-## Automation Script for Model Training
+## Too many experiments to carry? Let's Automate it
+### Automation Script for Model Training
 To streamline and accelerate our model training process, we developed an automation script designed to handle the training of multiple models efficiently on faster GPU devices. This script facilitates the generation of over 100 models, which are essential for tasks such as souping, augmentation, and hyperparameter optimization.
-### Key Features
+#### Key Features
 
 - **Parameter Management:** The script uses a `ParameterManager` class to define and manage various hyperparameters for training. It generates all possible combinations of these parameters and queues them for execution.
   
@@ -396,7 +396,7 @@ To streamline and accelerate our model training process, we developed an automat
 
 - **Model Saving:** Once training is completed, the script automatically copies the saved models to a designated directory for further analysis.
 
-### How It Works
+#### How It Works
 
 1. **Parameter Generation:** The script initializes with a set of hyperparameters and generates all possible combinations. These combinations are then queued for processing.
 
