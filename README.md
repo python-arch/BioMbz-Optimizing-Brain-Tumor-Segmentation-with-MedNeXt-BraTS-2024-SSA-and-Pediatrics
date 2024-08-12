@@ -8,7 +8,7 @@ This project focuses on advancing the performance of the baseline MedNext model 
 - [Dataset Setup](#Dataset_Setup)
 - [Usage](#usage)
 - [Features and Experiments OverView](#features)
-- [BraTS MLCube submission](# Brats2024 MLCube Submission)
+- [BraTS MLCube submission](#Brats2024_MLCube_Submission)
 
 ## Installation
 
@@ -412,7 +412,7 @@ This automation script significantly reduces the manual effort required for mode
 
 </center>
 
-# Brats2024 MLCube Submission
+# Brats2024_MLCube_Submission
 
 ## Contents
 - [Setup](#setup)
