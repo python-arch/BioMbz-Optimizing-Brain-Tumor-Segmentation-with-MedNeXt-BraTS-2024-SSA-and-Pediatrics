@@ -1,4 +1,4 @@
-# Optimizing Brain Tumor Segmentation with MedNeXt: BraTS 2024 SSA and Pediatrics
+# Optimizing Brain Tumor Segmentation with MedNeXt: BraTS 2024 SSA and Pediatrics 
 
 This project focuses on advancing the performance of the baseline MedNext model for brain tumor segmentation by exploring various methods to alter the model architecture and evaluating the impact of training with different datasets of varying sizes. Our work aims to provide robust solutions for segmenting brain tumors with higher accuracy and efficiency.
 
