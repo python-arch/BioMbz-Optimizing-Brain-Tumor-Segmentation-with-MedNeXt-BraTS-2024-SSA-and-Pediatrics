@@ -1,6 +1,6 @@
 # Optimizing Brain Tumor Segmentation with MedNeXt: BraTS 2024 SSA and Pediatrics 
 
-This repo explains the code/results for **Optimizing Brain Tumor Segmentation with MedNeXt: BraTS 2024 SSA and Pediatrics** paper. With our method, we were able to** win 3rd place in both SSA and PEDs challenge in BraTS 2024**. The main focus is advancing the performance of the baseline MedNext model for brain tumor segmentation by exploring various methods to alter the model architecture and evaluating the impact of training with different datasets of varying sizes. Our work aims to provide robust solutions for segmenting brain tumors with higher accuracy and efficiency.
+This repo explains the code/results for **Optimizing Brain Tumor Segmentation with MedNeXt: BraTS 2024 SSA and Pediatrics** paper. With our method, we were able to **win 3rd place in both SSA and PEDs challenge in BraTS 2024**. The main focus is advancing the performance of the baseline MedNext model for brain tumor segmentation by exploring various methods to alter the model architecture and evaluating the impact of training with different datasets of varying sizes. Our work aims to provide robust solutions for segmenting brain tumors with higher accuracy and efficiency.
 
 ## Table of Contents
  
