@@ -569,9 +569,23 @@ docker push docker.synapse.org/<synID>/<image name>:<tag>
 
 We extend our gratitude to the original Med-DDPM authors and the BraTS Africa dataset creators. This work builds upon their valuable contributions to the field of medical image synthesis and analysis.
 
-## Citation
+# Citation Information
 
-If you use this adapted model or the synthetic data in your research, please cite both the original Med-DDPM paper and our work (details to be added upon publication).
+If you use our repository in your research, please cite our paper "Optimizing Brain Tumor Segmentation with MedNeXt: BraTS 2024 SSA and Pediatrics":
+
+```bibtex
+@misc{hashmi2024optimizingbraintumorsegmentation,
+    title     = {Optimizing Brain Tumor Segmentation with MedNeXt: BraTS 2024 SSA and Pediatrics},
+    author    = {Sarim Hashmi and Juan Lugo and Abdelrahman Elsayed and Dinesh Saggurthi 
+                 and Mohammed Elseiagy and Alikhan Nurkamal and Jaskaran Walia 
+                 and Fadillah Adamsyah Maani and Mohammad Yaqub},
+    year      = {2024},
+    eprint    = {2411.15872},
+    archivePrefix = {arXiv},
+    primaryClass = {eess.IV},
+    url       = {https://arxiv.org/abs/2411.15872}
+}
+```
 
 <!-- # ensembling
 
