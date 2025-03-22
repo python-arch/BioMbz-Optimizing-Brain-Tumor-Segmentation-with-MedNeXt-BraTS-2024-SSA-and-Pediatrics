@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BraTS 2024 - Brain Tumor Segmentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #2c3e50;
+        }
+        header {
+            background-color: #34495e;
+            color: #ecf0f1;
+            padding: 20px;
+            text-align: center;
+        }
+        header img {
+            max-height: 100px;
+        }
+        nav {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 10px 0;
+        }
+        nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        main {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        section {
+            margin-bottom: 40px;
+        }
+        h2 {
+            color: #34495e;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+        .image-center {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .image-center img {
+            max-width: 90%;
+            height: auto;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        .gif-container img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            background-color: #34495e;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="images/BraTS_logo.png" alt="BraTS 2024 Logo">
+        <h1>BraTS 2024 Challenge</h1>
+        <h1>Optimizing Brain Tumor Segmentation</h1>
+    </header>
+    <nav>
+        <a href="#overview">Overview</a>
+        <a href="#team">Team</a>
+        <a href="#methods">Methods</a>
+        <a href="#results">Results</a>
+        <a href="#conclusion">Conclusion</a>
+    </nav>
+    <main>
+        <section id="overview">
+            <h2>Overview</h2>
+            <p>
+                    The Brain Tumor Segmentation (BraTS) 2024 Challenge focuses on advancing methods for 
+                    segmenting gliomas in 3D multimodal brain MRI scans. Our team tackled two specific tasks:
+                    segmentation for sub-Saharan Africa populations and pediatric datasets, using the MedNeXt architecture.
+            </p>
+            <div class="image-center">
+                <img src="images/gif_for_the_whole_challenge.gif" alt="Challenge Overview GIF">
+            </div>
+        </section>
+
+        <section id="team">
+            <h2>Meet the Team</h2>
+            <p>
+                <strong>Contributors:</strong> Juan Guevara, Abdelrahman El Sayed, Mohammed Elseiagy, Alikhan Nurkamal, and Dinesh Saggurthi.<br>
+                <strong>Guidance by:</strong> Sarim Hashmi, Fadillah Adamsyah Maani, Sanoojan Baliah, Dana Mohamed, and Prof. Mohammad Yaqub.
+            </p>
+        </section>
+
+        <section id="methods">
+            <h2>Methods</h2>
+            <p>
+                Our methodology centered around the innovative MedNeXt architecture, designed to harness the complementary strengths of convolutional neural networks (ConvNets) and transformers. This hybrid approach facilitated superior segmentation accuracy by leveraging both local feature extraction and global contextual understanding.
+            </p>
+            <p>
+                Key innovations included:
+                <ul>
+                    <li><strong>Automated Preprocessing:</strong> Simplified data preparation with automated normalization and resizing tailored to each dataset.</li>
+                    <li><strong>Dynamic Augmentations:</strong> Real-time application of augmentations such as rotations, flips, intensity scaling, and elastic transformations to improve model generalization.</li>
+                    <li><strong>Fine-tuning Techniques:</strong> Carefully tuned hyperparameters to adapt the model to specific domain characteristics.</li>
+                </ul>
+            </p>
+            <div class="image-center">
+                <img src="images/MedNext_Architecture.png" alt="MedNeXt Architecture">
+            </div>
+            <p>
+                The training pipeline incorporated robust data augmentation strategies to address dataset variability and mitigate distribution shifts. The following illustrates the diverse augmentations applied during preprocessing:
+            </p>
+            <div class="image-center gif-container">
+                <img src="images/brain_gif_of_different_augmentations.gif" alt="Brain Augmentation GIF">
+            </div>
+            <p>
+                To ensure an efficient workflow, we developed an automation script that streamlined preprocessing, model training, and inference tasks. This script significantly reduced manual effort and ensured consistency across experiments.
+            </p>
+            <div class="image-center">
+                <img src="images/automation_script_image.png" alt="Automation Script">
+            </div>
+        </section>
+        
+        <section id="results">
+            <h2>Results</h2>
+            <p>
+                Our comprehensive approach achieved outstanding results across both sub-Saharan Africa and pediatric brain tumor datasets. The following sections detail the quantitative and qualitative metrics of our models.
+            </p>
+            
+            <h3>BraTS Africa Dataset</h3>
+            <p>
+                For the sub-Saharan Africa dataset, the MedNeXt architecture demonstrated exceptional segmentation performance, achieving high Dice scores and low HD95 values. The results are summarized in the following visual:
+            </p>
+            <div class="image-center">
+                <img src="images/subsaharian_results.png" alt="Sub-Saharan Africa Results">
+            </div>
+            
+            <h3>BraTS Pediatric Dataset</h3>
+            <p>
+                On the pediatric dataset, our model showed comparable segmentation accuracy with distinct challenges addressed through data-specific tuning. The performance metrics are visually presented below:
+            </p>
+            <div class="image-center">
+                <img src="images/ped_results.png" alt="Pediatric Dataset Results">
+            </div>
+            
+            <h3>Data Visualization</h3>
+            <p>
+                The following image illustrates the cross-sectional views of the four MRI modalities provided for each brain scan: T1, T2, T1-contrast-enhanced, and FLAIR. These modalities were instrumental in capturing diverse tissue contrasts and abnormalities for robust segmentation.
+            </p>
+            <div class="image-center">
+                <img src="images/The_four_modalities.png" alt="Four Modalities">
+            </div>
+            
+            <h3>Diffusion Model Architecture</h3>
+            <p>
+                The diffusion model architecture contributed significantly to refining segmentation predictions. By iteratively refining the outputs, the model improved delineation between tumor and non-tumor regions, resulting in enhanced accuracy.
+            </p>
+            <div class="image-center">
+                <img src="images/diffusion_model_architecture.png" alt="Diffusion Model Architecture">
+            </div>
+            <p>
+                A dynamic representation of the diffusion model’s performance across sample predictions is provided below:
+            </p>
+            <div class="image-center gif-container">
+                <img src="images/gif_for_a_sample_of_diffusion_model.gif" alt="Diffusion Model GIF">
+            </div>
+        </section>        
+
+        <section id="conclusion">
+            <h2>Conclusion</h2>
+            <p>
+                The BraTS 2024 challenge provided a platform to address brain tumor segmentation challenges in diverse populations. 
+                Our MedNeXt-based approach achieved state-of-the-art performance metrics, with average Dice scores exceeding 0.89 for the SSA dataset 
+                and 0.83 for the pediatric dataset. Through rigorous fine-tuning, innovative preprocessing, and the integration of diffusion models, 
+                we demonstrated robust and reliable segmentation performance.
+            </p>
+            <p>
+                Our journey was marked by teamwork, late-night coding sessions, and the shared goal of contributing to medical imaging advancements.
+            </p>
+            <div class="image-center">
+                <img src="images/gif_for_the_whole_challenge.gif" alt="Challenge Overview GIF">
+            </div>
+            <p>
+                Read more about our methods and results in our final paper: 
+                <a href="https://arxiv.org/abs/2411.15872" target="_blank">Optimizing Brain Tumor Segmentation with MedNeXt</a>.
+            </p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 BraTS Challenge Team. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
